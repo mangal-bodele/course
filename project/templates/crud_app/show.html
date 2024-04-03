@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+{% block content %}
+ <table class="mt-5 m-auto border border-3 p-3 col-8 text-center">
+     <thead class="p-3 mb-2 bg-dark text-white">
+        <tr>
+            <th>{{ ID }}</th>
+            <th>{{ FIRST }}</th>
+            <th>{{ LAST }}</th>
+            <th>{{ MOBILE }}</th>
+            <th>{{ ADDDRESS }}</th>
+            <th>{{ DOB }}</th>
+            <th>{{ GENDER }}</th>
+            <th>{{ COURSE }}</th>
+            <th>{{ FEES }}</th>
+            <th COLSPAN="2">{{ ACTION }}</th>
+        </tr>
+     </thead>
+     <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.fname }}</td>
+                    <td>{{ course.lname }}</td>
+                    <td>{{ course.mobile_number }}</td>
+                    <td>{{ course.address }}</td>
+                    <td>{{ course.dob }}</td>
+                    <td>{{ course.gender }}</td>
+                    <td>{{ course.course }}</td>
+                    <td>{{ course.fees }}</td>
+
+                    <td>
+                        <a href="{% url 'update_url' course.id %}">
+                            <button><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'cancel_url' course.id %}">
+                                    <button><i class="bi bi-pencil-square"></i>&nbspCnacel</button>
+                        </a>
+                    </td>
+                {% endfor %}    
+            </tr>
+     </tbody>
+ </table>
+{% endblock %}
+
